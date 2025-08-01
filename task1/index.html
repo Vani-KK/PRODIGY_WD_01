@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+            background: #ffeedd; /* pastel light color for all pages */
+            transition: background 0.4s;
+        }
+        nav {
+            position: fixed;
+            width: 100%;
+            background: #333;
+            color: #fff;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+        nav.scrolled {
+            background: #222;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 0;
+            display: block;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffd700;
+            border-bottom: 2px solid #ffd700;
+        }
+        section {
+            min-height: 100vh;
+            padding: 80px 20px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: transparent; /* inherit from body */
+        }
+        .hero {
+            background: transparent;
+        }
+        .about, .contact {
+            background: transparent;
+        }
+        .about-content, .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-info {
+            margin-top: 16px;
+            font-size: 1.1em;
+        }
+        .contact-info a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="hero" class="hero">
+        <h1>Welcome to Our Landing Page</h1>
+        <p>Scroll down or use navigation to explore.</p>
+    </section>
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>We are a passionate team dedicated to building modern, user-friendly web experiences. Our mission is to deliver high-quality solutions that help businesses grow and connect with their audience.</p>
+            <ul style="list-style:none; padding:0;">
+                <li>✔️ Innovative web design</li>
+                <li>✔️ Responsive layouts</li>
+                <li>✔️ Customer-focused approach</li>
+                <li>✔️ Experienced developers</li>
+                <li>✔️ Creative problem solving</li>
+            </ul>
+            <p>Our team combines creativity and technology to deliver results that exceed expectations. We value collaboration, transparency, and continuous learning.</p>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2>Contact</h2>
+            <p>Get in touch with us! We’d love to hear from you.</p>
+            <div class="contact-info">
+                <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+                <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p>Address: 123 Main Street, City, Country</p>
+                <p>Follow us on 
+                    <a href="#">Twitter</a>, 
+                    <a href="#">LinkedIn</a>, 
+                    <a href="#">Instagram</a>
+                </p>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Scroll effect for navbar and body background
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                document.body.style.background = "#e0f7fa"; // pastel blue on scroll
+            } else {
+                navbar.classList.remove('scrolled');
+                document.body.style.background = "#ffeedd"; // pastel peach default
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').slice(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
